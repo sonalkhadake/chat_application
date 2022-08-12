@@ -5,7 +5,7 @@ import "./Chat.css"
 import send from "../../Images/send.png"
 import Message from '../Message/Massage'
 import closeIcon from "../../Images/closeIcon.jpg"
-import ReactScrollToBottom from "react-scroll-to-bottom";
+import ScrollToBottom from "react-scroll-to-bottom";
 
 
 const ENDPOINT= 'http://localhost:4000/';
@@ -80,9 +80,9 @@ const Chat = () => {
             <h2>WeChat</h2>
             <a href="/"> <img src={closeIcon} alt="Close" /></a>
         </div>
-        <ReactScrollToBottom className="chatBox">
+        <ScrollToBottom className="chatBox">
                     {messages.map((item, i) => <Message user={item.id === id ? '' : item.user} message={item.message} classs={item.id === id ? 'right' : 'left'} />)}
-                </ReactScrollToBottom>
+                </ ScrollToBottom>
         <div className="inputBox">
             <input   onKeyPress={(event) => event.key === 'Enter' ? sendMessage() : null} type="text" id="chatInput" />
             <button onClick ={sendMessage} className="sendBtn"><img src={send} alt="Send" /></button>

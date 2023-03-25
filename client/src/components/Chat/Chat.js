@@ -8,7 +8,8 @@ import closeIcon from "../../Images/closeIcon.jpg"
 import ScrollToBottom from "react-scroll-to-bottom";
 
 
-const ENDPOINT= 'http://localhost:4000/';
+// const ENDPOINT= 'http://localhost:4000/';
+const ENDPOINT= 'https://mernapp1.onrender.com';
 let socket;
 
 const Chat = () => {

@@ -23,36 +23,11 @@ app.get("/", (req,res)=>{
     res.send("hellow world")
 })
 
-
-// io.on("connection",(socket)=>{
-//     console.log("new connection")
-
-//     socket.on("joined", ({user})=>{
-//         users[socket.id]=user
-//       console.log(`${user} has joined a chat`)
-//       socket.broadcast.emit("userJoined", {user:"Admin", message:`${users[socket.id]} has joined `})
-
-//       socket.emit("welcome", {user:"Admin", message:"Welcome to the chat"})
-//     })
-
-// socket.on("message",(message,Id)=>{
-//     /////display message for whole chat//
-//     io.emit("sendmsg", {user:users[Id], message, Id})
-
-// })
-
-//    socket.on("disconnected",()=>{
-//     socket.broadcast.emit("leave", {user:"Admin", message:`${users[socket.id]} has left the chat`})
-//     console.log("user left")
-//    })
-   
-// })
 io.on("connection",(socket)=>{
     console.log("New Connection");
 
     socket.on('joined',({user})=>{
           users[socket.id]=user;
-          console.log(`${user} has joined `);
           socket.broadcast.emit('userJoined',{user:"Admin",message:` ${users[socket.id]} has joined`});
           socket.emit('welcome',{user:"Admin",message:`Hi ${users[socket.id]}, Welcome to the chat`})
     })
@@ -62,8 +37,7 @@ io.on("connection",(socket)=>{
     })
 
     socket.on('disconnected',()=>{
-          socket.broadcast.emit('leave',{user:"Admin",message:`${users[socket.id]}  has left`});
-        console.log(`user left`);
+          socket.broadcast.emit('leave',{user:"Admin",message:`${users[socket.id]}  has joined`});
     })
 });
 
